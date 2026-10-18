@@ -85,3 +85,12 @@
 //   .then(console.log)
 //   .catch(console.error)
 //   .finally(() => client.close());
+
+// {
+//     readConcern: { level: 'snapshot' },
+//     writeConcern: { w: 'majority' },
+//     readPreference: 'primary'
+//   }
+
+// voting in replica set, replica sync
+// What heppen when trnasaction not commit.
