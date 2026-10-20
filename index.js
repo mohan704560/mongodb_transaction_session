@@ -86,11 +86,48 @@
 //   .catch(console.error)
 //   .finally(() => client.close());
 
+
+
+
 // {
-//     readConcern: { level: 'snapshot' },
+//     readConcern: { level: 'primary' },
 //     writeConcern: { w: 'majority' },
 //     readPreference: 'primary'
 //   }
 
-// voting in replica set, replica sync
-// What heppen when trnasaction not commit.
+
+
+
+// Voting in replica set
+// {
+//   _id: <string>,
+//   version: <int>,
+//   term: <int>,
+//   protocolVersion: <number>,
+//   writeConcernMajorityJournalDefault: <boolean>,
+//   configsvr: <boolean>,
+//   members: [
+//     {
+//       _id: <int>,
+//       host: <string>,
+//       arbiterOnly: <boolean>,
+//       buildIndexes: <boolean>,
+//       hidden: <boolean>,
+//       priority: <number>, // Number between 0 and 1000 for primary/secondary members. Higher propority higher chance to become primary. 0 means never become primary.
+//       tags: <document>,
+//       secondaryDelaySecs: <int>,
+//       votes: <number> // value can be 0|1. 0 means non voting members.
+//     },
+//     ...
+//   ],
+//   settings: {
+//     chainingAllowed : <boolean>,
+//     heartbeatIntervalMillis : <int>, default 2 sec.The frequency in milliseconds of the heartbeats.
+//     heartbeatTimeoutSecs: <int>, // The time in seconds that a node waits for a heartbeat from another node before considering it down. default 10 sec.
+//     electionTimeoutMillis : <int>,
+//     catchUpTimeoutMillis : <int>,
+//     getLastErrorModes : <document>,
+//     getLastErrorDefaults : <document>,
+//     replicaSetId: <ObjectId></ObjectId>
+//   }
+// }

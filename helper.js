@@ -28,7 +28,6 @@ export async function counselorAssignment(db, user) {
         { $set: { assignedUserId: user._id } },
         { returnDocument: "after" },
       );
-    console.log("updateCounselor", updateCounselor);
 
     const updateUser = await db
       .collection("users")
@@ -37,7 +36,6 @@ export async function counselorAssignment(db, user) {
         { $set: { assignedCounselorId: counselor._id } },
         { returnDocument: "after" },
       );
-    console.log("updateUser", updateUser);
   } catch (err) {
     console.error("Error connecting to the database:", err);
     throw err;
@@ -64,7 +62,6 @@ export async function counselorAssignmentThroughTransaction(db, client, user) {
         { $set: { assignedUserId: user._id } },
         { returnDocument: "after", session },
       );
-    console.log("updateCounselor", updateCounselor);
 
     const updateUser = await db
       .collection("users")
@@ -73,7 +70,6 @@ export async function counselorAssignmentThroughTransaction(db, client, user) {
         { $set: { assignedCounselorId: counselor._id } },
         { returnDocument: "after", session },
       );
-    console.log("updateUser", updateUser);
     await session.commitTransaction();
     console.log("Transaction committed successfully.");
   } catch (err) {
